@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Little Cupcake Bakeshop – Brooklyn &amp; SoHo since 2005</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F3EA; --ink:#000; --pink:#F7B0C5; --pink-soft:#F7D1D7; --card:#FFFDF8; --muted:#5A5148; --tag-bg:#000; --tag-ink:#fff;
+  --head:"Libre Baskerville",Baskerville,"Times New Roman",Times,serif;
+  --text:"Libre Baskerville",Baskerville,"Times New Roman",Times,serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root{color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.7 var(--text);padding-bottom:84px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--head);text-transform:uppercase;margin:0;line-height:1.05}
+/* sticky header */
+header{position:sticky;top:0;z-index:10;background:var(--pink);color:#000;padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:.25rem 1.5rem;flex-wrap:wrap;min-height:58px;padding-top:.35rem;padding-bottom:.35rem}
+.logo{font:800 1.2rem/1.1 var(--head);text-transform:uppercase;color:#000}
+nav{display:flex;gap:.1rem 1.4rem;flex-wrap:wrap;font:500 1rem/1.2 var(--head);text-transform:uppercase}
+nav a{color:#fff;padding:.35rem 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.on{text-decoration:none;border-bottom-color:#fff}
+/* hero */
+.hero{max-width:none;padding:0;background:#fff}
+.rot{position:relative;margin:0 auto;width:100%;max-width:974px;aspect-ratio:974/528;background:#fff;overflow:hidden}
+.rot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .8s ease}
+.rot img.on{opacity:1}
+.dots{position:absolute;left:0;right:0;bottom:.5rem;display:flex;justify-content:center;gap:.5rem;z-index:2}
+.dots button{width:12px;height:12px;border-radius:50%;border:2px solid #000;background:#fff;padding:0;cursor:pointer}
+.dots button[aria-current="true"]{background:#000}
+.hero h1{font-weight:800;font-size:clamp(2.4rem,6vw,4.6rem);letter-spacing:-.01em;max-width:11ch}
+.hero h1 span{background:var(--pink);color:#000;padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero p{max-width:34rem;margin:1.5rem 0 2rem;font-size:1.15rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;font:700 .9rem/1 var(--head);text-transform:uppercase;letter-spacing:.06em;padding:1rem 1.5rem;background:#000;color:#F8F3EA}
+.btn.pink{background:var(--pink);color:#000}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn:hover{text-decoration:none;opacity:.85}
+.strip{background:#000;color:#F8F3EA;font:700 .8rem/1.4 var(--head);text-transform:uppercase;letter-spacing:.12em}
+.strip .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 1.5rem;padding-top:.9rem;padding-bottom:.9rem}
+/* sections */
+section{padding:4.5rem 0 0}
+h2{font-weight:800;font-size:clamp(1.8rem,4.5vw,2.8rem);margin-bottom:1.25rem}
+.lead{max-width:40rem}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:2.5rem}
+.facts{display:grid;gap:.9rem;align-content:start}
+.fact{background:var(--pink);color:#000;padding:1.2rem 1.4rem}
+.fact b{display:block;font:800 1.15rem/1.2 var(--head);text-transform:uppercase;margin-bottom:.25rem}
+.fact span{font-size:.95rem;line-height:1.5;display:block}
+.fact.alt{background:var(--pink-soft);color:var(--ink)}
+.green{margin-top:2rem;border-top:2px solid var(--ink);padding-top:1.25rem}
+.green h3{font-size:1.1rem;margin-bottom:.5rem}
+/* menu */
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.5rem;padding:0}
+.tab{font:700 .78rem/1 var(--head);text-transform:uppercase;letter-spacing:.06em;padding:.7rem .95rem;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.panel{background:var(--card);border:1px solid var(--pink-soft);padding:1.75rem}
+.panel .note{font:700 .8rem/1.3 var(--head);text-transform:uppercase;letter-spacing:.08em;margin:0 0 .8rem;color:var(--muted)}
+.items{list-style:none;margin:0;padding:0;columns:2 260px;column-gap:2.5rem}
+.items li{padding:.4rem 0;border-bottom:1px dotted var(--pink);break-inside:avoid}
+.items li i{color:var(--muted);font-size:.9rem}
+.desc{margin-top:1.5rem}
+.desc summary{font:700 .85rem/1.2 var(--head);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
+.desc dl{margin:1rem 0 0;display:grid;gap:.7rem;font-size:.95rem;line-height:1.55}
+.desc dt{font:700 .85rem/1.2 var(--head);text-transform:uppercase;display:inline}
+.desc dd{display:inline;margin:0}
+/* catering */
+.cater{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.card{padding:1.75rem;background:var(--pink-soft);color:var(--ink)}
+.card:first-child{background:var(--pink);color:#000}
+.card h3{font-size:1.2rem;margin-bottom:.6rem}
+.clients{margin-top:1rem;font-size:.95rem;color:var(--muted)}
+/* menu hover preview */
+.items li:hover,.items li:focus{background:var(--pink-soft);outline:none}
+#tip{position:fixed;z-index:20;width:220px;background:#fff;color:#000;border:2px solid #000;padding:.4rem;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#tip[hidden]{display:none}
+#tip img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+#tip .ph{aspect-ratio:1;background:var(--pink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;padding:.75rem;text-transform:uppercase;font-size:.95rem;line-height:1.2}
+#tip .ph small{font-size:.65rem;letter-spacing:.1em;opacity:.9}
+#tip .cap{margin-top:.4rem;font-size:.75rem;text-transform:uppercase;line-height:1.2}
+/* locations */
+.locs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.75rem}
+#visit .wrap{max-width:1240px}
+#visit .loc{padding:1rem}
+#visit .loc address{font-size:.85rem;overflow-wrap:anywhere}
+#visit .loc .hrs{font-size:.78rem}
+#visit .loc .links{flex-wrap:wrap;gap:.3rem .8rem;font-size:.75rem}
+@media(max-width:1040px){.locs{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}}
+.loc{border:2px solid var(--ink);padding:1.4rem;display:flex;flex-direction:column;gap:.25rem;background:var(--card)}
+.loc h3{font-size:1.05rem}
+.loc address{font-style:normal;font-size:.95rem}
+.loc .hrs{font-size:.88rem;color:var(--muted);line-height:1.55;margin:.3rem 0}
+.status{display:inline-flex;align-items:center;gap:.4rem;font:700 .7rem/1 var(--head);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem}
+.dot{width:9px;height:9px;border-radius:50%;background:#777}
+.open .dot{background:#1B9C55}.closed .dot{background:#D6455D}
+.loc .links{margin-top:auto;padding-top:.7rem;display:flex;gap:1rem;font:700 .8rem/1 var(--head);text-transform:uppercase}
+.loc .links a{text-decoration:underline;text-underline-offset:3px}
+/* blog + shop */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.big{padding:2rem;display:flex;flex-direction:column;gap:.7rem;align-items:flex-start;min-height:210px}
+.big.shop{background:var(--pink);color:#000}
+.big.blog{background:var(--card);border:1px solid var(--pink-soft)}
+.big h3{font-size:1.5rem}
+.big .btn{margin-top:auto}
+.tag{background:var(--tag-bg);color:var(--tag-ink);font:400 .75rem/1 var(--head);text-transform:uppercase;padding:.35rem .5rem}
+.cats{margin:1.25rem 0 0;font:800 .95rem/1.5 var(--head);text-transform:uppercase}
+.cats span{font-weight:500}
+.cats a:hover{text-decoration:underline}
+/* footer */
+footer{margin-top:5rem;background:var(--pink);color:#000;padding:2.5rem 0 1.5rem}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem 3rem}
+footer .name{font:800 1.1rem/1.2 var(--head);text-transform:uppercase;margin:0 0 .5rem}
+footer ul{list-style:none;margin:0;padding:0;display:flex;gap:.3rem 1.25rem;flex-wrap:wrap;font-size:.95rem}
+footer ul a{text-decoration:underline;text-underline-offset:3px}
+.credit{margin:2rem 0 0;font-size:.75rem}
+.credit a{text-decoration:underline}
+.float{position:fixed;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;gap:.5rem;justify-content:center;padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom,0px));pointer-events:none;z-index:9}
+.float a,.float button{pointer-events:auto;border:0;cursor:pointer;background:#F7B0C5;color:#000;font:700 .95rem/1 var(--head);padding:1rem 1.8rem;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.float a:hover,.float button:hover{text-decoration:none;background:#F59DB8}
+.pick{display:flex;gap:.5rem;pointer-events:auto}
+.pick[hidden]{display:none}
+@media(max-width:760px){.about,.cater,.two{grid-template-columns:1fr}.hero{padding-top:2.5rem}}
+/* white text on colored (pink/black) backgrounds; dark text stays only on cream/white */
+header,header a,.logo,nav a,.btn,.btn.pink,.strip,.fact,.fact.alt,.card,.card:first-child,.big.shop,footer,footer a,.float a,.float button,.tab[aria-selected="true"]{color:#fff}
+.fact.alt,.card{background:var(--pink)}
+header,.fact,.card,.big.shop,footer,.float a,.float button{text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.btn{text-shadow:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rot img{transition:none}}
+h1{letter-spacing:-.02em}
+nav{font-size:.95rem;font-weight:500}
+.btn,.tab,.float a,.loc .links,.desc summary,.desc dt{font-size:.85rem;font-weight:700}
+.status,.tag,.strip,.panel .note,.cats,.more{font-size:.8rem;font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Little Cupcake Bakeshop</a>
+    <nav aria-label="Main" id="nav">
+      <a href="#about">About</a><a href="#menu">Menu</a><a href="#catering">Catering</a><a href="#visit">Visit</a><a href="#more">Shop &amp; Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section id="about"><div class="wrap">
+    <h2>About</h2>
+    <div class="about">
+      <div class="lead">
+        <p>Little Cupcake Bakeshop was established in Brooklyn, NY on July 23rd, 2005. We specialize in baking wholesome traditional American desserts, using only the freshest, sustainable ingredients, predominantly sourcing locally, from farms in the Hudson Valley, Catskills, Vermont, New Jersey, and in strides, seasonally, with all baking done in small batches on-site, everyday.</p>
+        <p>No shortening. No preservatives. Our milk is from grass fed cows.</p>
+        <p>Our espresso bars serve organic teas and Non-GMO illy caffe. Each LCB store is a green architectural design and we’re active in supporting local community groups, and sustainable development initiatives at the local, national and international level.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>Brooklyn Blackout</b><span>Hailed by Food &amp; Wine as the “Best Chocolate Cake in America.”</span></div>
+        <div class="fact alt"><b>Mott Street</b><span>Our homage to Old Little Italy: a tiramisu-style vanilla bean cupcake soaked in illy espresso with homemade mascarpone frosting.</span></div>
+        <div class="fact alt"><b>Blue Velvet</b><span>Buttermilk cake with New Jersey blueberries, cream cheese frosting and flower-based food coloring.</span></div>
+      </div>
+    </div>
+    <div class="green lead">
+      <h3>Green architectural design</h3>
+      <p style="margin:0;font-size:.98rem">Our goal is to create a new business model that works for people and planet. Each Little Cupcake Bakeshop institutes energy efficient practices, appliances, equipment and tools, including an 18 Seer HVAC unit, Energy Star equipment, Low Emissions windows, LED and CFL lighting, motion sensors and thermal control monitors. Salvaged materials and fixtures, recycled sheet rock, FSC certified wood, eco grout, sealants, zero VOC paints are also part of our construction. Our cleaning solutions are toxic free and packaging is made from corn or recycled mulch and is 100% biodegradable. We predominantly source our everyday ingredients from local farms in New Jersey, Hudson Valley, Catskills, Pennsylvania and Vermont.</p>
+    </div>
+  </div></section>
+
+  <section id="menu"><div class="wrap">
+    <h2>Menu</h2>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Menu categories"></div>
+    <div class="panel" id="panel" role="tabpanel"></div>
+  </div></section>
+
+  <section id="catering"><div class="wrap">
+    <h2>Catering</h2>
+    <div class="cater">
+      <div class="card"><h3>Personal events</h3><p style="margin:0">Weddings, birthdays, black tie, brunch, dinner, business or school luncheons. We offer beautiful and tasteful presentations.</p></div>
+      <div class="card"><h3>Special events</h3><p style="margin:0">No party is too large. Past clients include Gansevoort Hotel, Saks Fifth Avenue, NYU, Mac Cosmetics, the Manhattan Borough President’s Office, New York City Council, Facebook and MTV.</p></div>
+    </div>
+    <p class="clients">Ready to plan? Call your nearest bakeshop below or <a href="mailto:info@littlecupcakebakeshop.com" style="text-decoration:underline">email us</a>.</p>
+  </div></section>
+
+  <section id="visit"><div class="wrap">
+    <h2>Visit us</h2>
+    <p class="lead" style="margin:0 0 1.5rem">Five bakeshops. Open now status uses New York time.</p>
+    <div class="locs" id="locs"></div>
+  </div></section>
+
+  <section id="more"><div class="wrap">
+    <div class="two">
+      <div class="big shop"><h3>Shop online</h3><p style="margin:0">Cakes, cookies and gift boxes shipped from our ovens to your door.</p><a class="btn" href="https://shop.littlecupcakebakeshop.com/">Visit the shop</a></div>
+      <div class="big blog"><span class="tag">Oct 1, 2023</span><h3>Hostess Ding Dong</h3><p style="margin:0">Our latest from the blog.</p><a class="btn" href="https://www.littlecupcakebakeshop.com/blog/2023/10/hostess-ding-dong.html">Continue reading</a></div>
+    </div>
+    <p class="cats"><span>Blog:</span> <a href="https://www.littlecupcakebakeshop.com/blog/baked-goods/">Baked Goods</a> / <a href="https://www.littlecupcakebakeshop.com/blog/celebrities/">Celebrities</a> / <a href="https://www.littlecupcakebakeshop.com/blog/event/">Event</a> / <a href="https://www.littlecupcakebakeshop.com/blog/press/">Press</a> / <a href="https://www.littlecupcakebakeshop.com/blog/archives.html">Archives</a></p>
+  </div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div><p class="name">Little Cupcake Bakeshop</p>
+        <ul><li><a href="mailto:info@littlecupcakebakeshop.com">Email</a></li><li><a href="https://www.littlecupcakebakeshop.com/contact.html">Contact</a></li><li><a href="https://www.littlecupcakebakeshop.com/blog/press/">Press</a></li></ul></div>
+      <div><p class="name">Follow</p>
+        <ul><li><a href="https://instagram.com/littlecupcakebakeshop">Instagram</a></li><li><a href="https://www.facebook.com/littlecupcakebakeshop">Facebook</a></li><li><a href="https://twitter.com/LittleCupcakeny">Twitter</a></li><li><a href="https://feeds.feedburner.com/LittleCupcakeBakeshop">RSS</a></li></ul></div>
+      <div><p class="name">Updates</p><a class="btn" href="https://littlecupcakebakeshop.us8.list-manage1.com/subscribe?u=a7a0f1d11c946527b25529b64&amp;id=0c23cebcd3">Sign up</a></div>
+    </div>
+  </div>
+</footer>
+<div class="float"><div class="pick" id="pick" hidden><a href="https://order.online/business/little-cupcake-bakeshop-11374348">DoorDash</a><a href="https://www.ubereats.com/search?q=Little%20Cupcake%20Bakeshop">Uber Eats</a></div><button type="button" id="ordbtn" aria-expanded="false" aria-controls="pick">Order Pickup &amp; Delivery</button></div>
+
+<script>
+(function(){
+  /* ---- menu ---- */
+  var M=[
+   ["Cupcakes","Golden Vanilla, Golden Chocolate, Southern Red Velvet, Peanut Butter &amp; Jelly, Coconut Cloud, Strawberry, Blue Velvet, Brooklyn Blackout, Pistachio Grape Jam, Cookies &amp; Cream, Hummingbird, Black &amp; White, Dreaming Princess, Mott Street, German Chocolate, Pumpkin Spice <i>(fall only)</i>, Gluten Free &amp; Vegan Chocolate"],
+   ["Layer cakes","Golden Vanilla, Golden Chocolate, Brooklyn Blackout, Southern Red Velvet, Carrot, Blue Velvet, Coconut Cloud, Mott Street, German Chocolate, Golden Ganache, Good Humor Strawberry, S’mores, Dreaming Princess, Black &amp; White, Peanut Butter &amp; Jelly, Hummingbird, Pumpkin Spice <i>(fall only)</i>"],
+   ["Half sheets","Brooklyn Blackout, Good Humor Strawberry, Southern Red Velvet, Golden Vanilla, Golden Chocolate"],
+   ["Cookies","Chocolate Chip, Oatmeal Butterscotch, Peanut Butter, Sugar, Double Chocolate Chunk; Vegan: Chocolate Chunk, Banana Chocolate Coconut, Chocolate Chip, Oatmeal Banana Coconut"],
+   ["Bundt cakes","Lemon Almond Bundt, Marbled Pound, Chocolate Chip Banana Bread Cake with Nutella"],
+   ["Cheesecakes","Original, Blueberry, Raspberry White Chocolate, Cookies &amp; Cream, Tiramisu, Caramel Pecan, Pumpkin Spice <i>(fall only)</i>"],
+   ["Ice cream","Brooklyn Blackout Cake, Southern Red Velvet Cake, Raspberry White Chocolate Cheesecake, Peanut Butter &amp; Jelly Cake, Carrot Cake, illy Espresso &amp; Brownie, Madagascar Vanilla Bean, Strawberry Mascarpone, Key Lime Pie, Banana Pudding","Available in hand-packed pints"],
+   ["Icebox","Old Fashioned Banana Pudding, Rice Pudding, Old Fashioned Icebox Pudding, Pistachio Icebox Pudding"],
+   ["Pies","Apple Crumb, Peanut Butter, Pecan, Pumpkin Spice <i>(fall only)</i>, Key Lime <i>(summer only)</i>"],
+   ["Bars","Brownie, Raspberry Fruit Bar, Cereal Treat, Coconut Pecan Dream Bar, Pecan Bar, Walnut Brownie, S’mores Bar <i>(winter only)</i>, Meyer Lemon <i>(September–April)</i>"],
+   ["Breakfast","Almond Croissant, Ham &amp; Cheese Croissant, Plain Croissant, Blueberry Muffin, Bran Muffin, Cinnamon Pecan Muffin, Gluten-Free Banana Chocolate Chunk Muffin, Vegan &amp; Gluten Free Blueberry Banana Muffin"]
+  ];
+  var D=[["Black &amp; White","rich chocolate cake layered with vanilla bean buttercream, covered in meringue icing and topped with a chocolate glaze."],["Blue Velvet","tender buttermilk and blueberry cake iced with mascarpone cream cheese."],["Brooklyn Blackout","moist chocolate cake filled with chocolate ganache and topped with chocolate buttercream and cake crumbs."],["Carrot","moist, delicate cake made with pecans and layered with cream cheese icing."],["Coconut Cloud","golden vanilla cake with coconut filling and meringue icing."],["Dreaming Princess","almond cake with raspberry and vanilla bean buttercream filling covered in meringue icing."],["German Chocolate","classic chocolate cake layered with a gooey filling of coconut and pecans."],["Golden Vanilla","rich, buttery traditional yellow cake made with all fresh and pure ingredients."],["Hummingbird","incredibly moist banana and pineapple cake with cream cheese and pecans (two layers only)."],["Mott Street","vanilla bean cake soaked in illy espresso with mascarpone cream cheese icing."],["Peanut Butter &amp; Jelly","chunky peanut butter layered with grape jelly and peanut butter cream cheese icing."],["Pumpkin Spice","buttery spice cake cushioned with maple cream cheese frosting (two layers only, fall only)."],["S’mores","buttery graham cracker cake layered with fudge, vanilla bean buttercream and topped with meringue frosting."],["Southern Red Velvet","traditional southern cake made with cocoa and cream cheese icing."],["Vegan Cookies &amp; Cream","rich almond milk cake with chocolate wafer cookies and soy vanilla buttercream."]];
+  var tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+  function pick(n){
+    [].forEach.call(tabs.children,function(b,i){b.setAttribute("aria-selected",i===n?"true":"false")});
+    var m=M[n],h=(m[2]?'<p class="note">'+m[2]+'</p>':'')+'<ul class="items">'+m[1].split(/, (?![^<]*>)/).map(function(x){return '<li tabindex="0" data-n="'+x.replace(/<[^>]+>/g,"").replace(/\s*\([^)]*\)\s*$/,"")+'">'+x+"</li>"}).join("")+"</ul>";
+    if(m[0]==="Layer cakes"){h+='<details class="desc"><summary>Layer cake descriptions</summary><dl>'+D.map(function(d){return "<div><dt>"+d[0]+"</dt> <dd>– "+d[1]+"</dd></div>"}).join("")+"</dl></details>"}
+    panel.innerHTML=h;
+  }
+  M.forEach(function(m,i){var b=document.createElement("button");b.className="tab";b.setAttribute("role","tab");b.textContent=m[0];b.onclick=function(){pick(i)};tabs.appendChild(b)});
+  pick(0);
+
+  /* ---- hover / tap / focus photo preview for each menu item ---- */
+  var IMG={}; // item name -> image source; add photos here, e.g. IMG["Brooklyn Blackout"]="data:image/jpeg;base64,..."
+  var tip=document.createElement("div");tip.id="tip";tip.hidden=true;tip.setAttribute("aria-hidden","true");document.body.appendChild(tip);
+  function showTip(li,x,y){
+    var n=li.getAttribute("data-n"),src=IMG[n];
+    tip.innerHTML=src?'<img alt="" src="'+src+'"><div class="cap"></div>':'<div class="ph"><span></span><small>Photo coming soon</small></div>';
+    (src?tip.querySelector(".cap"):tip.querySelector(".ph span")).textContent=n;
+    tip.hidden=false;
+    var w=tip.offsetWidth,h=tip.offsetHeight,L=x+18,T=y+18;
+    if(L+w>window.innerWidth-8)L=x-w-18;
+    if(L<8)L=8;
+    if(T+h>window.innerHeight-8)T=window.innerHeight-h-8;
+    if(T<8)T=8;
+    tip.style.left=L+"px";tip.style.top=T+"px";
+  }
+  panel.addEventListener("mousemove",function(e){var li=e.target.closest(".items li");if(li)showTip(li,e.clientX,e.clientY);else tip.hidden=true});
+  panel.addEventListener("mouseleave",function(){tip.hidden=true});
+  panel.addEventListener("focusin",function(e){var li=e.target.closest(".items li");if(li){var r=li.getBoundingClientRect();showTip(li,r.left+r.width/2,r.bottom-10)}});
+  panel.addEventListener("focusout",function(){tip.hidden=true});
+  panel.addEventListener("click",function(e){var li=e.target.closest(".items li");if(li){var r=li.getBoundingClientRect();showTip(li,r.left+r.width/2,r.bottom-10)}});
+  document.addEventListener("click",function(e){if(!e.target.closest("#panel"))tip.hidden=true});
+  window.addEventListener("scroll",function(){tip.hidden=true},{passive:true});
+
+  /* ---- locations with live open/closed (New York time) ---- */
+  var all=function(o,c){return [[o,c],[o,c],[o,c],[o,c],[o,c],[o,c],[o,c]]};
+  var L=[
+    {n:"SoHo",a:["30 Prince Street","New York, NY 10012"],p:"212-941-9100",h:all(8,23),s:["Mon – Sun 8AM – 11PM"]},
+    {n:"Bay Ridge",a:["9102 Third Avenue","Brooklyn, NY 11209"],p:"718-680-4465",h:[[8,22],[7,22],[7,22],[7,22],[7,22],[7,22],[8,23]],s:["Mon – Thurs 7AM – 10PM","Fri 7AM – 10PM","Sat 8AM – 11PM","Sun 8AM – 10PM"]},
+    {n:"Vanderbilt Avenue",a:["598 Vanderbilt Avenue","Brooklyn, NY 11238"],p:"718-783-0770",h:all(8,23),s:["Mon – Sun 8AM – 11PM"]},
+    {n:"Flushing Avenue",a:["995 Flushing Avenue","Brooklyn, NY 11206"],p:"718-381-3706",h:[[9,21],[8,21],[8,21],[8,21],[8,21],[8,21],[9,21]],s:["Mon – Fri 8AM – 9PM","Sat 9AM – 9PM","Sun 9AM – 9PM"]},
+    {n:"Bleecker Street",a:["270 Bleecker Street","New York, NY 10014"],p:"212-243-9900",h:[[8,23.5],[8,23],[8,23],[8,23],[8,23.5],[8,23.5],[8,23.5]],s:["Mon – Wed 8AM – 11PM","Thu – Sun 8AM – 11:30PM"]}
+  ];
+  var parts=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date());
+  var g=function(t){return parts.filter(function(x){return x.type===t})[0].value};
+  var day=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(g("weekday"));
+  var hr=(parseInt(g("hour"),10)%24)+parseInt(g("minute"),10)/60;
+  document.getElementById("locs").innerHTML=L.map(function(l){
+    var h=l.h&&l.h[day],open=h&&hr>=h[0]&&hr<h[1];
+    return '<article class="loc">'+(l.h?'<span class="status '+(open?"open":"closed")+'"><span class="dot"></span>'+(open?"Open now":"Closed now")+'</span>':'')+'<h3>'+l.n+'</h3><address>'+l.a.join("<br>")+'</address>'+(l.s?'<p class="hrs">'+l.s.join("<br>")+'</p>':'')+
+      '<div class="links">'+(l.p?'<a href="tel:+1'+l.p.replace(/-/g,"")+'">'+l.p+'</a>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(l.a.join(", "))+'">Directions</a></div></article>';
+  }).join("");
+
+  /* ---- hero rotator ---- */
+  (function(){
+    var imgs=[].slice.call(document.querySelectorAll("#rot img")),dots=document.getElementById("dots"),k=0,hold=false,box=document.getElementById("rot");
+    function go(n){imgs[k].classList.remove("on");k=(n+imgs.length)%imgs.length;imgs[k].classList.add("on");[].forEach.call(dots.children,function(d,i){d.setAttribute("aria-current",i===k?"true":"false")})}
+    imgs.forEach(function(_,i){var d=document.createElement("button");d.setAttribute("aria-label","Show image "+(i+1));d.onclick=function(){go(i)};dots.appendChild(d)});
+    go(0);
+    box.onmouseenter=function(){hold=true};box.onmouseleave=function(){hold=false};
+    if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){setInterval(function(){if(!hold)go(k+1)},4500)}
+  })();
+
+  var ob=document.getElementById("ordbtn"),pk=document.getElementById("pick");
+  ob.onclick=function(){var o=pk.hidden;pk.hidden=!o;ob.setAttribute("aria-expanded",o?"true":"false")};
+  document.addEventListener("click",function(e){if(!e.target.closest(".float")){pk.hidden=true;ob.setAttribute("aria-expanded","false")}});
+
+  /* ---- smooth in-page nav + active link ---- */
+  var links=[].slice.call(document.querySelectorAll("#nav a,.hero .btn.line"));
+  links.forEach(function(a){a.addEventListener("click",function(e){var t=document.querySelector(a.getAttribute("href"));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth"})}})});
+  var navA=[].slice.call(document.querySelectorAll("#nav a"));
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){navA.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-35% 0px -60% 0px"});
+    document.querySelectorAll("main section").forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+</body>
+</html>
